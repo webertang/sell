@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+    // 重定向
+    {
+      path: '/', 
+      redirect: '/goods' 
+    },
     {
       path: '/goods',
       name: '商品',

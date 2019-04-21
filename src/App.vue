@@ -1,18 +1,35 @@
 <template>
   <div id="app">
     <div class="tab">
-        <sellHeader></sellHeader>
+        <v_header :seller="seller"></v_header>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-import sellHeader from '@/components/header'
+import v_header from '@/components/header'
+import axios from '@/libs/api.request'
+
 export default {
   name: 'App',
+  data(){
+    return{
+      seller:{
+
+      }
+    }
+  },
+  created(){
+    axios.request({
+      url: 'seller',
+      method: 'get'
+    }).then(res=>{
+      this.seller = res.data.seller
+    })
+  },
   components: {
-    sellHeader
+    v_header
   }
 }
 </script>
