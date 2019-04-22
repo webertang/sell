@@ -21,6 +21,10 @@
                         <span class="text">{{seller.supports[0].description}}</span>
                     </div>
                 </div>
+                <div v-if="seller.supports" class="support-count">
+                    <span class="count">{{seller.supports.length}}个</span>
+                    <i class="icon-keyboard_arrow_right"></i>
+                </div>
                 <!-- /content -->
             </div>
             <div class="bulletin-wapper"></div>
@@ -52,17 +56,20 @@ export default {
 // 头部
 .header{
     color:#fff;
-    background: #000;
+    background: gray;
     .content-wapper{
         display: flex;
+        position: relative;
         padding:24px 12px 18px 24px;
         .avatar{
             display: inline-block;
+            img{
+                border-radius: 2px;
+            }
         }
         .content{
             display: inline-block;
             text-align: left;
-            font-size: 14px;
             margin-left: 16px;
             .title{
                 margin:2px 0 8px 0;
@@ -81,6 +88,57 @@ export default {
                     line-height: 18px;
                     font-weight: bold;
                 }
+            }
+            .description{
+                margin-bottom: 10px;
+                line-height: 12px;
+                font-size:14px;
+            }
+            .support{
+                .icon{
+                    display: inline-block;
+                    vertical-align: top;
+                    height: 12px;
+                    width: 12px;
+                    background-size: 12px 12px;
+                    background-repeat: no-repeat;
+                    &.decrease{
+                        .bg-image('../../header/img/decrease_1');
+                    }
+                    &.discount{
+                        .bg-image('../../header/img/discount_1');
+                    }
+                    &.guarantee{
+                        .bg-image('../../header/img/guarantee_1');
+                    }
+                    &.invoice{
+                        .bg-image('../../header/img/invoice_1');
+                    }
+                    &.special{
+                        .bg-image('../../header/img/special_1');
+                    }
+                }
+                .text{
+                    line-height: 12px;
+                    font-size: 12px;
+                }
+            }
+        }
+        .support-count{
+            position: absolute;
+            right: 12px;;
+            bottom: 18px;
+            padding: 0 8px;
+            height: 24px;
+            line-height: 24px;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.2);
+            text-align:center;
+            .count{
+                font-size: 10px;
+            }
+            .icon-keyboard_arrow_right{
+                font-size: 10px;
             }
         }
     }
