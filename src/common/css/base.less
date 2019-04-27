@@ -4,3 +4,15 @@ body,html{
     font-size: 14px;
     font-family: 'PingFang SC','STHeitiSC-Light','Helvetica-Light',Arial, Helvetica, sans-serif;
   }
+
+.clearfix{
+  display: inline-block;
+  &:after{
+    display: block;
+    content: ".";
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}

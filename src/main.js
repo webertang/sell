@@ -7,8 +7,6 @@ import router from './router'
 // 实际打包时应该不引入mock 引用本地数据
 if (process.env.NODE_ENV !== 'production') require('@/mock')
 
-import './components/common/css/index.less'
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
