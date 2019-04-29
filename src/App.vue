@@ -15,9 +15,7 @@ export default {
   name: 'App',
   data(){
     return{
-      seller:{
-
-      }
+      seller:{      }
     }
   },
   created(){
