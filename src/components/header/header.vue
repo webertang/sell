@@ -76,6 +76,7 @@
 
 <script>
 import star from "@/components/star";
+
 export default {
     name: "v_header",
     props:{
@@ -106,12 +107,13 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "../../common/css/index.less";
+@import "~common/css/mixin.less";
 
 // 头部
 .header{
     color:#fff;
     background: rgba(7, 17, 27, .5);
+    text-align: left;
     .content-wapper{
         display: flex;
         position: relative;
@@ -367,7 +369,7 @@ export default {
         .border-1px(red);
     }
     .router-link-active {
-    color: red;
+        color: red;
     }
 }
 

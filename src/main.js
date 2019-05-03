@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import './cube-ui'
+/*css样式*/
+import './common/css/index.less';
+
 /* eslint-disable */
 // 实际打包时应该不引入mock 引用本地数据
 if (process.env.NODE_ENV !== 'production') require('@/mock')

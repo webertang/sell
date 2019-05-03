@@ -3,13 +3,13 @@
     <div class="tab">
         <v_header :seller="seller"></v_header>
     </div>
-    <router-view/>
+    <router-view :seller="seller"/>
   </div>
 </template>
 
 <script>
 import v_header from '@/components/header'
-import axios from '@/libs/api.request'
+import {getSellerData} from '@/api/data'
 
 export default {
   name: 'App',
@@ -19,10 +19,7 @@ export default {
     }
   },
   created(){
-    axios.request({
-      url: 'seller',
-      method: 'get'
-    }).then(res=>{
+    getSellerData().then(res=>{
       this.seller = res.data.seller
     })
   },
@@ -33,6 +30,7 @@ export default {
 </script>
 
 <style>
+
 #app {
   text-align: center;
 }
