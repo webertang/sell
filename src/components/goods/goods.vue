@@ -18,7 +18,7 @@
                 <li v-for="item in goods" class="food-list food-list-hook">
                     <h1 class="title">{{item.name}}</h1>
                     <ul>
-                        <li v-for="food in item.foods" class="food-item border-1px">
+                        <li @click="selectFood(food)" v-for="food in item.foods" class="food-item border-1px">
                             <div class="icon">
                                 <img width="57" height="57" :src="food.icon" alt="">
                             </div>
@@ -45,6 +45,7 @@
         </div>
         <!-- 购物车 -->
         <ShopCart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></ShopCart>
+        <Food :food="selectedFood" ref="food" @cart-add="drop"></Food>
     </div>
 </template>
 
@@ -53,6 +54,7 @@ import BtScroll from 'better-scroll'
 import {getSellerData} from '@/api/data'
 import ShopCart from '@/components/shop-cart'
 import CartControl from '@/components/cart-control'
+import Food from '@/components/food'
 
 export default {
     name: 'goods',
@@ -63,13 +65,15 @@ export default {
     },
     components:{
         ShopCart,
-        CartControl
+        CartControl,
+        Food
     },
     data(){
         return{
             goods:[],
             listHeight:[],
-            scrollY:0
+            scrollY:0,
+            selectedFood:{}
         }
     },
     computed:{
@@ -106,6 +110,11 @@ export default {
         })
     },
     methods:{
+        //用于查看详情
+        selectFood(food){
+            this.selectedFood = food;
+            this.$refs.food.show();
+        },
         selectMenu(index, event){
             let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');
             let el = foodList[index];
@@ -139,12 +148,6 @@ export default {
                 height += item.clientHeight;
                 this.listHeight.push(height);
             }
-        }
-    },
-    events:{
-        'cart.add'(target){
-            console.log("goods，接收到事件");
-            this._drop(target);
         }
     }
 }
